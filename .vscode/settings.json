@@ -1,0 +1,6 @@
+{
+  "rust-analyzer.linkedProjects": [
+    "./lesson1/Cargo.toml"
+  ],
+  "rust-analyzer.showUnlinkedFileNotification": false
+}
