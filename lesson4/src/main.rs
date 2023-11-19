@@ -1,3 +1,5 @@
+use std::ops::Add;
+
 #[derive(Debug)]
 enum TypeBox {
     Inter(i32),
@@ -61,7 +63,25 @@ fn test_case_two() {
     for v in vec {
         call_show(&*v);
     }
-}   
+}
+
+#[derive(Debug, PartialEq)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Add for Point {
+    type Output = Point;
+
+    fn add(self, other: Point) -> Point {
+        Point {
+            x: self.x + other.x,
+            y: self.y + other   .y,
+        }
+    }
+}
+
 
 fn main() {
     
@@ -69,4 +89,10 @@ fn main() {
     test_case_one();
     println!("test_case_two-------------------------------------------");
     test_case_two();
+
+    println!("test_add-------------------------------------------");
+
+    let p1 = Point { x: 10, y: 20 };    
+    let p2 = Point { x: 30, y: 40 };
+    assert_eq!(p1 + p2, Point { x: 40, y: 60 });    
 }
